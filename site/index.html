@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <!-- viewport-fit=cover: lets the page extend under the iPhone notch / home bar; we pad with env(safe-area-inset-*) below -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vlad — Specialist în kinetoterapie și masaj | Chișinău</title>
+  <meta name="description" content="Vlad — specialist în kinetoterapie și masaj în Chișinău. Recuperare după accidentări, dureri de spate, masaj terapeutic și sportiv. Programează-te telefonic sau pe WhatsApp.">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Vlad Kineto">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preload" as="image" href="/assets/vlad-400.webp" type="image/webp" fetchpriority="high">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vlad — Specialist în kinetoterapie și masaj">
+  <meta property="og:description" content="Recuperare, kinetoterapie și masaj terapeutic în Chișinău. Programează-te direct.">
+  <meta property="og:image" content="/assets/og.jpg">
+  <meta property="og:locale" content="ro_RO">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physiotherapy",
+    "name": "Vlad — Kinetoterapie și masaj",
+    "description": "Kinetoterapie, recuperare și masaj terapeutic în Chișinău.",
+    "image": "/assets/vlad-800.jpg",
+    "address": { "@type": "PostalAddress", "addressLocality": "Chișinău", "addressCountry": "MD" },
+    "areaServed": "Chișinău"
+  }
+  </script>
+
+  <style>
+    /* ---------- tokens ---------- */
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --ink-2: #475569;
+      --ink-3: #94a3b8;
+      --line: #e2e8f0;
+      --accent: #10b981;
+      --accent-ink: #065f46;
+      --accent-soft: #d1fae5;
+      --hero: #0f172a;
+      --hero-2: #1e293b;
+      --radius: 20px;
+      --radius-sm: 14px;
+      --gutter: 20px;
+      --cta-h: 52px;
+      --shadow: 0 10px 30px -12px rgba(15, 23, 42, .25);
+      /* safe areas (0 outside iOS) */
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
+    }
+
+    /* ---------- base / iOS hygiene ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      -webkit-text-size-adjust: 100%;   /* stop Safari inflating text on rotate */
+      text-size-adjust: 100%;
+      scroll-behavior: smooth;
+      background: var(--hero);           /* colour behind the rubber-band overscroll at top */
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;                   /* iOS native body size */
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      /* room for the sticky CTA bar + home indicator */
+      padding-bottom: calc(var(--cta-h) + 24px + var(--sab));
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
+    button, a.btn { font: inherit; }
+    /* 44x44 minimum tap target, Apple HIG */
+    a, button { min-height: 44px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .wrap {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding-left: calc(var(--gutter) + var(--sal));
+      padding-right: calc(var(--gutter) + var(--sar));
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      background: radial-gradient(120% 90% at 50% -10%, var(--hero-2) 0%, var(--hero) 70%);
+      color: #fff;
+      padding-top: calc(28px + var(--sat));
+      padding-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {           /* soft green glow behind portrait */
+      content: "";
+      position: absolute; inset: auto 0 -120px 0; height: 320px;
+      background: radial-gradient(50% 60% at 50% 100%, rgba(16,185,129,.35), transparent 70%);
+      pointer-events: none;
+    }
+    .hero .wrap { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+    .portrait {
+      width: 164px; height: 164px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,.14);
+      box-shadow: 0 20px 50px -15px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08);
+      background: #fff;
+      margin-bottom: 20px;
+      /* GPU hint: keeps the circle crisp on scroll in Safari */
+      transform: translateZ(0);
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: #a7f3d0;
+      margin-bottom: 10px;
+    }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(16,185,129,.25); }
+
+    h1 {
+      font-size: clamp(30px, 8.5vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      font-weight: 800;
+    }
+    h1 small { display: block; font-size: clamp(17px, 4.6vw, 20px); font-weight: 500; letter-spacing: 0; color: #cbd5e1; margin-top: 8px; line-height: 1.35; }
+
+    .lead { color: #cbd5e1; font-size: 16px; margin-top: 16px; max-width: 34ch; }
+
+    .cta-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      width: 100%; margin-top: 26px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: var(--cta-h);
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700; font-size: 16px;
+      border: 1px solid transparent;
+      transition: transform .12s ease, background-color .15s ease, opacity .15s ease;
+      -webkit-user-select: none; user-select: none;
+      touch-action: manipulation;        /* no 300ms delay / double-tap zoom on iOS */
+      white-space: nowrap;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn svg { width: 20px; height: 20px; flex: none; }
+    .btn-primary { background: var(--accent); color: #fff; grid-column: 1 / -1; box-shadow: 0 10px 24px -10px rgba(16,185,129,.8); }
+    .btn-primary:active { background: #0ea371; }
+    .btn-ghost { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.16); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .btn-ghost:active { background: rgba(255,255,255,.16); }
+
+    .meta {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px;
+      margin-top: 22px; font-size: 14px; color: #94a3b8;
+    }
+    .meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .meta svg { width: 16px; height: 16px; opacity: .8; }
+
+    /* ---------- sections ---------- */
+    section { padding: 36px 0 8px; }
+    .section-title {
+      font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--ink-3); margin-bottom: 14px;
+    }
+    h2 { font-size: 24px; font-weight: 800; letter-spacing: -.01em; margin-bottom: 10px; }
+    .muted { color: var(--ink-2); }
+
+    .cards { display: grid; gap: 12px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 18px 18px 16px;
+      display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start;
+      box-shadow: 0 1px 2px rgba(15,23,42,.04);
+    }
+    .card .ic {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--accent-soft); color: var(--accent-ink);
+      display: grid; place-items: center;
+    }
+    .card .ic svg { width: 22px; height: 22px; }
+    .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .card p { font-size: 15px; color: var(--ink-2); line-height: 1.45; }
+
+    .about {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .about p + p { margin-top: 12px; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+    .fact { background: var(--bg); border-radius: var(--radius-sm); padding: 12px 10px; text-align: center; }
+    .fact b { display: block; font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+    .fact span { font-size: 12px; color: var(--ink-2); }
+
+    .contacts { display: grid; gap: 10px; }
+    .contact {
+      display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 14px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 12px 14px; min-height: 68px;
+      transition: transform .12s ease, background-color .15s ease;
+      touch-action: manipulation;
+    }
+    .contact:active { transform: scale(.985); background: #f8fafc; }
+    .contact .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: #fff; }
+    .contact .ic svg { width: 22px; height: 22px; }
+    .contact .ic.phone { background: var(--ink); }
+    .contact .ic.wa { background: #25d366; }
+    .contact .ic.tg { background: #229ed9; }
+    .contact .ic.ig { background: linear-gradient(45deg, #f58529, #dd2a7b 55%, #8134af); }
+    .contact .ic.map { background: #ef4444; }
+    .contact b { display: block; font-size: 16px; font-weight: 700; }
+    .contact span { display: block; font-size: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+    .contact .chev { width: 20px; height: 20px; color: var(--ink-3); }
+
+    footer {
+      padding: 36px 0 12px;
+      text-align: center; font-size: 13px; color: var(--ink-3);
+    }
+
+    /* ---------- sticky bottom CTA (mobile) ---------- */
+    .dock {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      padding: 10px calc(var(--gutter) + var(--sar)) calc(10px + var(--sab)) calc(var(--gutter) + var(--sal));
+      background: rgba(246,247,249,.82);
+      -webkit-backdrop-filter: saturate(180%) blur(18px);
+      backdrop-filter: saturate(180%) blur(18px);
+      border-top: 1px solid rgba(15,23,42,.08);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      transform: translateY(110%);
+      transition: transform .28s cubic-bezier(.2,.8,.2,1);
+    }
+    .dock.show { transform: translateY(0); }
+    .dock .btn-primary { grid-column: auto; }
+    .dock .btn-dark { background: var(--ink); color: #fff; }
+
+    /* ---------- larger screens ---------- */
+    @media (min-width: 720px) {
+      :root { --gutter: 32px; }
+      .wrap { max-width: 680px; }
+      .hero { padding-top: 64px; padding-bottom: 64px; }
+      .portrait { width: 200px; height: 200px; }
+      .cta-row { grid-template-columns: 1.2fr 1fr 1fr; }
+      .btn-primary { grid-column: auto; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .dock { display: none; }
+      body { padding-bottom: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn, .contact, .dock { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="portrait">
+        <picture>
+          <source type="image/webp" srcset="/assets/vlad-400.webp 1x, /assets/vlad-800.webp 2x">
+          <img src="/assets/vlad-400.jpg" srcset="/assets/vlad-400.jpg 1x, /assets/vlad-800.jpg 2x"
+               width="400" height="400" alt="Vlad, specialist în kinetoterapie și masaj" decoding="async" fetchpriority="high">
+        </picture>
+      </div>
+
+      <div class="eyebrow">Programări deschise</div>
+      <h1>Vlad
+        <small>Specialist în kinetoterapie &amp; masaj</small>
+      </h1>
+      <p class="lead">Recuperare după accidentări, dureri de spate și articulații, masaj terapeutic și sportiv. Abordare individuală, fără protocoale „la grămadă”.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+37360000000" data-contact="phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
+          Sună acum
+        </a>
+        <a class="btn btn-ghost" href="https://wa.me/37360000000?text=Bun%C4%83%2C%20Vlad!%20Vreau%20s%C4%83%20m%C4%83%20programez." target="_blank" rel="noopener" data-contact="whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 0 1 0 16.4 8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zm-3.3 4.4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.2z"/></svg>
+          WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="https://t.me/vlad_kineto" target="_blank" rel="noopener" data-contact="telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6 18.8 19c-.2 1-.9 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.4-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L7.1 13 2.6 11.6c-1-.3-1-1 .2-1.4l17.7-6.8c.8-.3 1.5.2 1.4 1.2z"/></svg>
+          Telegram
+        </a>
+      </div>
+
+      <div class="meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chișinău</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Lun–Sâm, 09:00–20:00</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>Răspuns în aceeași zi</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ SERVICII ============ -->
+    <section id="servicii">
+      <div class="wrap">
+        <div class="section-title">Servicii</div>
+        <h2>Cu ce te pot ajuta</h2>
+        <p class="muted" style="margin-bottom:18px">Fiecare ședință începe cu o evaluare. Planul se construiește pe problema ta, nu pe un șablon.</p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M4 15h16M20 20V10M8 10V6a4 4 0 0 1 8 0v4"/></svg></div>
+            <div>
+              <h3>Kinetoterapie</h3>
+              <p>Exerciții terapeutice ghidate pentru mobilitate, forță și postură. Dureri lombare, cervicale, genunchi, umăr.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+            <div>
+              <h3>Recuperare post-traumatică</h3>
+              <p>După entorse, fracturi, operații sau accidentări sportive. Revenire treptată și sigură la activitate.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c3-5 6-5 9 0s6 5 9 0"/><path d="M3 18c3-5 6-5 9 0s6 5 9 0" opacity=".5"/></svg></div>
+            <div>
+              <h3>Masaj terapeutic</h3>
+              <p>Relaxare musculară, reducerea tensiunii și a durerii. Util la sedentarism și muncă la birou.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+            <div>
+              <h3>Masaj sportiv</h3>
+              <p>Pregătire înainte de efort și refacere după antrenamente sau competiții. Experiență directă din sport de performanță.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DESPRE ============ -->
+    <section id="despre">
+      <div class="wrap">
+        <div class="section-title">Despre</div>
+        <div class="about">
+          <h2>De ce Vlad</h2>
+          <p class="muted">Vin din sportul de performanță, deci știu din interior ce înseamnă o accidentare, cât de frustrant e să stai pe bară și cât de mult contează recuperarea făcută corect.</p>
+          <p class="muted">Lucrez individual, explic ce facem și de ce, și îți dau exerciții pe care le poți continua acasă. Fără promisiuni goale: progres măsurabil, ședință cu ședință.</p>
+          <div class="facts">
+            <div class="fact"><b>1:1</b><span>ședințe individuale</span></div>
+            <div class="fact"><b>60'</b><span>durata medie</span></div>
+            <div class="fact"><b>Centru</b><span>Chișinău</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-title">Contact</div>
+        <h2>Programează-te</h2>
+        <p class="muted" style="margin-bottom:18px">Scrie-mi sau sună. Îți răspund în aceeași zi și stabilim prima ședință.</p>
+
+        <div class="contacts">
+          <a class="contact" href="tel:+37360000000" data-contact="phone">
+            <div class="ic phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg></div>
+            <div><b>Telefon</b><span>+373 60 000 000</span></div>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="contact" href="https://wa.me/37360000000?text=Bun%C4%83%2C%20Vlad!%20Vreau%20s%C4%83%20m%C4%83%20programez." target="_blank" rel="noopener" data-contact="whatsapp">
+            <div class="ic wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 0 1 0 16.4 8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zm-3.3 4.4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.2z"/></svg></div>
+            <div><b>WhatsApp</b><span>Scrie-mi direct</span></div>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="contact" href="https://t.me/vlad_kineto" target="_blank" rel="noopener" data-contact="telegram">
+            <div class="ic tg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6 18.8 19c-.2 1-.9 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.4-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L7.1 13 2.6 11.6c-1-.3-1-1 .2-1.4l17.7-6.8c.8-.3 1.5.2 1.4 1.2z"/></svg></div>
+            <div><b>Telegram</b><span>@vlad_kineto</span></div>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="contact" href="https://instagram.com/vlad_kineto" target="_blank" rel="noopener" data-contact="instagram">
+            <div class="ic ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+            <div><b>Instagram</b><span>@vlad_kineto</span></div>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="contact" href="https://maps.apple.com/?q=Chi%C8%99in%C4%83u" target="_blank" rel="noopener" data-contact="map">
+            <div class="ic map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><b>Locație</b><span>Chișinău, Centru</span></div>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year">2026</span> Vlad · Kinetoterapie &amp; masaj · Chișinău</div>
+  </footer>
+
+  <!-- ============ STICKY CTA (mobile only) ============ -->
+  <nav class="dock" id="dock" aria-label="Contact rapid">
+    <a class="btn btn-primary" href="tel:+37360000000" data-contact="phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
+      Sună
+    </a>
+    <a class="btn btn-dark" href="https://wa.me/37360000000?text=Bun%C4%83%2C%20Vlad!%20Vreau%20s%C4%83%20m%C4%83%20programez." target="_blank" rel="noopener" data-contact="whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 0 1 0 16.4 8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zm-3.3 4.4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.2z"/></svg>
+      WhatsApp
+    </a>
+  </nav>
+
+  <script>
+    (function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Show the sticky dock only after the hero CTAs scroll out of view.
+      var dock = document.getElementById('dock');
+      var hero = document.querySelector('.cta-row');
+      if ('IntersectionObserver' in window && hero) {
+        new IntersectionObserver(function (entries) {
+          dock.classList.toggle('show', !entries[0].isIntersecting);
+        }, { rootMargin: '-10px 0px 0px 0px' }).observe(hero);
+      } else {
+        dock.classList.add('show');
+      }
+
+      // Lightweight click tracking hook: wire gtag/fbq here later without touching markup.
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-contact]');
+        if (!a) return;
+        var ch = a.getAttribute('data-contact');
+        if (window.gtag) gtag('event', 'contact_click', { channel: ch });
+        if (window.fbq) fbq('trackCustom', 'ContactClick', { channel: ch });
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
