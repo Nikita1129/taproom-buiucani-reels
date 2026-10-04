@@ -3,7 +3,11 @@
 Site static, un singur fișier: `site/index.html`. Fără build, fără dependențe.
 
 ## Deploy (Netlify)
-Site-ul Netlify `vlad-kinetoterapie` există deja. Leagă-l de acest repo:
+Live: https://vlad-kinetoterapie.netlify.app (site id `12493377-4f12-40f3-97f5-e14640971046`).
+v1 a fost publicată ca fișier unic (imagini inline) prin import de pe un artifact claude.ai public,
+pentru că sesiunea cloud nu avea acces de rețea la Netlify. `vlad-kinetoterapie-old` e un site gol, poate fi șters.
+
+Pentru deploy automat din Git (necesar pentru faza 2), leagă site-ul de acest repo:
 Netlify → Site configuration → Build & deploy → Continuous deployment → **Link repository** → `Nikita1129/taproom-buiucani-reels`, branch `master`.
 `netlify.toml` setează deja publish dir = `site`. După asta, fiecare push pe `master` publică automat.
 
